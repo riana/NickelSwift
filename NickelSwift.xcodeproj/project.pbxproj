@@ -7,9 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3612DE6F413448D7B701037C /* Pods_NickelSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 681DE9E5B7B3E9601B67A1E2 /* Pods_NickelSwiftTests.framework */; };
+		8E9CFAC9733A28D3D9CBA7DC /* Pods_NickelSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CCC2FD3758D4F1CB47E7504 /* Pods_NickelSwift.framework */; };
 		96104D281C52CD1000930238 /* NickelSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 96104D271C52CD1000930238 /* NickelSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96104D2F1C52CD1000930238 /* NickelSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96104D241C52CD1000930238 /* NickelSwift.framework */; };
 		96104D341C52CD1000930238 /* NickelSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96104D331C52CD1000930238 /* NickelSwiftTests.swift */; };
+		96104D3F1C52CEA500930238 /* NickelStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96104D3E1C52CEA500930238 /* NickelStoreTests.swift */; };
+		96104D411C52CEB400930238 /* NickelStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96104D401C52CEB400930238 /* NickelStore.swift */; };
+		96104D431C52CFD000930238 /* NickelWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96104D421C52CFD000930238 /* NickelWebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,12 +28,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05D0F6E9C04CFD2763D52C34 /* Pods-NickelSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NickelSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-NickelSwift/Pods-NickelSwift.release.xcconfig"; sourceTree = "<group>"; };
+		066F03E8CF4A5B5197B11E34 /* Pods-NickelSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NickelSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NickelSwiftTests/Pods-NickelSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
+		681DE9E5B7B3E9601B67A1E2 /* Pods_NickelSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NickelSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		76A65111E03CB98F167BCE2E /* Pods-NickelSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NickelSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NickelSwift/Pods-NickelSwift.debug.xcconfig"; sourceTree = "<group>"; };
+		7CCC2FD3758D4F1CB47E7504 /* Pods_NickelSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NickelSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96104D241C52CD1000930238 /* NickelSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NickelSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96104D271C52CD1000930238 /* NickelSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NickelSwift.h; sourceTree = "<group>"; };
 		96104D291C52CD1000930238 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96104D2E1C52CD1000930238 /* NickelSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NickelSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		96104D331C52CD1000930238 /* NickelSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickelSwiftTests.swift; sourceTree = "<group>"; };
 		96104D351C52CD1000930238 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96104D3E1C52CEA500930238 /* NickelStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NickelStoreTests.swift; sourceTree = "<group>"; };
+		96104D401C52CEB400930238 /* NickelStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NickelStore.swift; sourceTree = "<group>"; };
+		96104D421C52CFD000930238 /* NickelWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NickelWebViewController.swift; sourceTree = "<group>"; };
+		F4D7357105BFE2E88F7144BC /* Pods-NickelSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NickelSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NickelSwiftTests/Pods-NickelSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E9CFAC9733A28D3D9CBA7DC /* Pods_NickelSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,18 +59,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				96104D2F1C52CD1000930238 /* NickelSwift.framework in Frameworks */,
+				3612DE6F413448D7B701037C /* Pods_NickelSwiftTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23D78F4AD2703396190E2EA7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				76A65111E03CB98F167BCE2E /* Pods-NickelSwift.debug.xcconfig */,
+				05D0F6E9C04CFD2763D52C34 /* Pods-NickelSwift.release.xcconfig */,
+				F4D7357105BFE2E88F7144BC /* Pods-NickelSwiftTests.debug.xcconfig */,
+				066F03E8CF4A5B5197B11E34 /* Pods-NickelSwiftTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		96104D1A1C52CD1000930238 = {
 			isa = PBXGroup;
 			children = (
 				96104D261C52CD1000930238 /* NickelSwift */,
 				96104D321C52CD1000930238 /* NickelSwiftTests */,
 				96104D251C52CD1000930238 /* Products */,
+				23D78F4AD2703396190E2EA7 /* Pods */,
+				BB412B8E10423FC38CAC7027 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +100,8 @@
 		96104D261C52CD1000930238 /* NickelSwift */ = {
 			isa = PBXGroup;
 			children = (
+				96104D421C52CFD000930238 /* NickelWebViewController.swift */,
+				96104D401C52CEB400930238 /* NickelStore.swift */,
 				96104D271C52CD1000930238 /* NickelSwift.h */,
 				96104D291C52CD1000930238 /* Info.plist */,
 			);
@@ -80,10 +111,20 @@
 		96104D321C52CD1000930238 /* NickelSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
+				96104D3E1C52CEA500930238 /* NickelStoreTests.swift */,
 				96104D331C52CD1000930238 /* NickelSwiftTests.swift */,
 				96104D351C52CD1000930238 /* Info.plist */,
 			);
 			path = NickelSwiftTests;
+			sourceTree = "<group>";
+		};
+		BB412B8E10423FC38CAC7027 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7CCC2FD3758D4F1CB47E7504 /* Pods_NickelSwift.framework */,
+				681DE9E5B7B3E9601B67A1E2 /* Pods_NickelSwiftTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -104,10 +145,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 96104D381C52CD1000930238 /* Build configuration list for PBXNativeTarget "NickelSwift" */;
 			buildPhases = (
+				21DD3318D9D9461F48FD3027 /* Check Pods Manifest.lock */,
 				96104D1F1C52CD1000930238 /* Sources */,
 				96104D201C52CD1000930238 /* Frameworks */,
 				96104D211C52CD1000930238 /* Headers */,
 				96104D221C52CD1000930238 /* Resources */,
+				8F6F76DED52760E94F2AF273 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -122,9 +165,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 96104D3B1C52CD1000930238 /* Build configuration list for PBXNativeTarget "NickelSwiftTests" */;
 			buildPhases = (
+				248BFF47692D112DC2FDD0C1 /* Check Pods Manifest.lock */,
 				96104D2A1C52CD1000930238 /* Sources */,
 				96104D2B1C52CD1000930238 /* Frameworks */,
 				96104D2C1C52CD1000930238 /* Resources */,
+				19F7916196CB86EE04576100 /* Embed Pods Frameworks */,
+				4E55A2AD9578A51F92C2AE62 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -189,11 +235,91 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		19F7916196CB86EE04576100 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NickelSwiftTests/Pods-NickelSwiftTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		21DD3318D9D9461F48FD3027 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		248BFF47692D112DC2FDD0C1 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4E55A2AD9578A51F92C2AE62 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NickelSwiftTests/Pods-NickelSwiftTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F6F76DED52760E94F2AF273 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NickelSwift/Pods-NickelSwift-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		96104D1F1C52CD1000930238 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96104D431C52CFD000930238 /* NickelWebViewController.swift in Sources */,
+				96104D411C52CEB400930238 /* NickelStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +327,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96104D3F1C52CEA500930238 /* NickelStoreTests.swift in Sources */,
 				96104D341C52CD1000930238 /* NickelSwiftTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,7 +434,9 @@
 		};
 		96104D391C52CD1000930238 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76A65111E03CB98F167BCE2E /* Pods-NickelSwift.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -318,12 +447,15 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.riana.NickelSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		96104D3A1C52CD1000930238 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05D0F6E9C04CFD2763D52C34 /* Pods-NickelSwift.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -339,6 +471,7 @@
 		};
 		96104D3C1C52CD1000930238 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4D7357105BFE2E88F7144BC /* Pods-NickelSwiftTests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = NickelSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -349,6 +482,7 @@
 		};
 		96104D3D1C52CD1000930238 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 066F03E8CF4A5B5197B11E34 /* Pods-NickelSwiftTests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = NickelSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -376,6 +510,7 @@
 				96104D3A1C52CD1000930238 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		96104D3B1C52CD1000930238 /* Build configuration list for PBXNativeTarget "NickelSwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -384,6 +519,7 @@
 				96104D3D1C52CD1000930238 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
