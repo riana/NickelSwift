@@ -18,10 +18,10 @@ struct TransferData {
     
     var callback:Bool = false
     
-    var data:AnyObject?
+    var data:[NSObject:AnyObject]?
 }
 
-public typealias BridgedMethod = (String, AnyObject) -> AnyObject?
+public typealias BridgedMethod = (String, [NSObject:AnyObject]) -> [NSObject:AnyObject]?
 
 public class NickelWebViewController: UIViewController, WKScriptMessageHandler, WKNavigationDelegate{
     
@@ -73,7 +73,7 @@ public class NickelWebViewController: UIViewController, WKScriptMessageHandler, 
                 transferData.callback = callback
             }
             
-            if let data = jsonData["data"] {
+            if let data = jsonData["data"] as? [NSObject:AnyObject]{
                 transferData.data = data
             }
             
