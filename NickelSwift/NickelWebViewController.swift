@@ -23,6 +23,14 @@ struct TransferData {
 
 public typealias BridgedMethod = (String, [NSObject:AnyObject]) -> [NSObject:AnyObject]?
 
+public protocol NickelFeature {
+    
+    var exposedFunctions: [String: BridgedMethod] { get }
+    
+    var nickelView:NickelWebViewController? { get set}
+    
+}
+
 public class NickelWebViewController: UIViewController, WKScriptMessageHandler, WKNavigationDelegate{
     
     var myWebView:WKWebView?;
@@ -43,6 +51,13 @@ public class NickelWebViewController: UIViewController, WKScriptMessageHandler, 
         
         
         self.view.addSubview(myWebView!)
+    }
+    
+    public func registerFeature(var feature:NickelFeature){
+        feature.nickelView = self
+        for (functionName, exposedFunction) in feature.exposedFunctions {
+            registerBridgedFunction(functionName, bridgedMethod: exposedFunction)
+        }
     }
     
     public func setMainPage(name:String){
@@ -119,6 +134,8 @@ public class NickelWebViewController: UIViewController, WKScriptMessageHandler, 
         // JS function Initialized
         sendtoView("Initialized", data:["status" : "ok"])
         didFinishLoading()
+        
+        registerFeature(StorageBridge())
     }
     
     public func registerBridgedFunction(operationId:String, bridgedMethod:BridgedMethod){
