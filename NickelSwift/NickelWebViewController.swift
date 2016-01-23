@@ -133,16 +133,16 @@ public class NickelWebViewController: UIViewController, WKScriptMessageHandler, 
     public func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
         // JS function Initialized
         sendtoView("Initialized", data:["status" : "ok"])
-        didFinishLoading()
+        doRegisterFeatures()
         
-        registerFeature(StorageBridge())
+        registerFeature(StorageFeature())
     }
     
     public func registerBridgedFunction(operationId:String, bridgedMethod:BridgedMethod){
         bridgedMethods[operationId] = bridgedMethod
     }
     
-    public func didFinishLoading() {
+    public func doRegisterFeatures() {
         
     }
     

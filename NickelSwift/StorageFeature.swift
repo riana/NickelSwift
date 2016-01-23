@@ -10,7 +10,7 @@ import Foundation
 
 import SwiftyJSON
 
-class StorageBridge: NickelFeature {
+class StorageFeature: NickelFeature {
     
     var store:NickelStore?;
     
