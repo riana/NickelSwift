@@ -102,7 +102,7 @@ public class NickelWebViewController: UIViewController, WKScriptMessageHandler, 
             let jsonData = try NSJSONSerialization.dataWithJSONObject(jsonProperties,options:NSJSONWritingOptions())
             let jsonString =  NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
             
-            let callbackString = "window.NativeBridge.handleMessage"
+            let callbackString = "window.NickelBridge.handleMessage"
             let jsFunction = "(\(callbackString)(\(jsonString)))";
             //          print(jsFunction)
             myWebView!.evaluateJavaScript(jsFunction) { (JSReturnValue:AnyObject?, error:NSError?)-> Void in
