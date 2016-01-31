@@ -19,21 +19,29 @@ class StorageFeature: NickelFeature {
     var nickelView:NickelWebViewController? {
         
         set(newNickelView) {
-        
+            
         }
         
         get {
             return self.nickelView
         }
-
+        
     }
     
     init() {
-        store = NickelStore()
-        exposedFunctions["storeObject"] = self.storeObject;
-        exposedFunctions["loadAllObjects"] = self.loadAllObjects;
-        exposedFunctions["deleteObject"] = self.deleteObject;
-        exposedFunctions["queryIndex"] = self.queryIndex;
+        self.store = NickelStore()
+        exposedFunctions["storeObject"] = self.storeObject
+        exposedFunctions["loadAllObjects"] = self.loadAllObjects
+        exposedFunctions["deleteObject"] = self.deleteObject
+        exposedFunctions["queryIndex"] = self.queryIndex
+        exposedFunctions["queryObject"] = self.queryObject
+        exposedFunctions["dropDatabase"] = self.dropDatabase
+    }
+    
+    func dropDatabase(operation:String, content:[NSObject:AnyObject]) -> [NSObject:AnyObject]?{
+        NickelStore.drop()
+        self.store = NickelStore()
+        return [NSObject:AnyObject]()
     }
     
     func storeObject(operation:String, content:[NSObject:AnyObject]) -> [NSObject:AnyObject]?{
@@ -47,7 +55,6 @@ class StorageFeature: NickelFeature {
     }
     
     func queryIndex(operation:String, content:[NSObject:AnyObject]) ->  [NSObject:AnyObject]?{
-        print("start query")
         let type = content["type"] as! String
         let q = content["query"] as! String
         let result = self.store?.findFromIndexQuery(type, query: q)
@@ -58,6 +65,19 @@ class StorageFeature: NickelFeature {
         }
         return [NSObject:AnyObject]()
     }
+    
+    func queryObject(operation:String, content:[NSObject:AnyObject]) ->  [NSObject:AnyObject]?{
+        let type = content["type"] as! String
+        let q = content["query"] as! String
+        let result = self.store?.findFromObjectQuery("type = '\(type)' and \(q)")
+        let jsonContent = JSON(result!)
+        if let stringResult = jsonContent.rawString() {
+            print("query \(stringResult)")
+            return ["data" : stringResult]
+        }
+        return [NSObject:AnyObject]()
+    }
+    
     
     func deleteObject(operation:String, content:[NSObject:AnyObject]) -> [NSObject:AnyObject]?{
         let type = content["type"] as! String
