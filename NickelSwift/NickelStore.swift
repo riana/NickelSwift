@@ -16,8 +16,8 @@ class StoredObject: Object {
     dynamic var id = ""
     dynamic var type = ""
     dynamic var data = ""
-    dynamic var date = 0.0
-    dynamic var updateDate = 0.0
+    dynamic var date:Int64 = 0
+    dynamic var updateDate:Int64 = 0
     
     override static func primaryKey() -> String? {
         return "id"
@@ -77,8 +77,8 @@ public class NickelStore {
         var storedObject = StoredObject()
         
         let jsonData = JSON.parse(data).rawValue as! [NSObject:AnyObject]
-        let todayTimeStamp = NSDate().timeIntervalSince1970
-        
+        let todayTimeStampDouble = NSDate().timeIntervalSince1970
+        let todayTimeStamp = Int64(todayTimeStampDouble*1000)
         // If  exists in DB then get the matching instance
         let inDBObjects = realm.objects(StoredObject).filter("type = '\(type)' and id = '\(id)'")
         if(inDBObjects.count == 1){
@@ -191,8 +191,8 @@ public class NickelStore {
         for obj in allObjects {
             var jsonData = JSON.parse(obj.data).rawValue as! [NSObject:AnyObject]
             jsonData["_id"] = obj.id
-            jsonData["_date"] = obj.date
-            jsonData["_updateDate"] = obj.updateDate
+            jsonData["_date"] = NSNumber(longLong:obj.date)
+            jsonData["_updateDate"] = NSNumber(longLong:obj.updateDate)
             jsonArray.append(jsonData)
         }
         return jsonArray
