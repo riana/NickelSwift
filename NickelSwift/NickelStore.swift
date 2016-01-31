@@ -76,27 +76,28 @@ public class NickelStore {
     public func save(type: String, id: String, data: String, indexed: [String]){
         
         var storedObject = StoredObject()
-        
-        let jsonData = JSON.parse(data).rawValue as! [NSObject:AnyObject]
-        let todayTimeStampDouble = NSDate().timeIntervalSince1970
-        let todayTimeStamp = Int64(todayTimeStampDouble*1000)
-        // If  exists in DB then get the matching instance
-        let inDBObjects = realm.objects(StoredObject).filter("type = '\(type)' and id = '\(id)'")
-        if(inDBObjects.count == 1){
-            storedObject = inDBObjects[0];
-            storedObject.updateDate = todayTimeStamp
-        }else {
-            storedObject.id = id
-            storedObject.date = todayTimeStamp
-            storedObject.updateDate = todayTimeStamp
-            
-        }
-        
-        if let clientDate = jsonData["_clientDate"] as? NSNumber {
-            storedObject.clientDate = clientDate.longLongValue
-        }
-        
         try! realm.write {
+            let jsonData = JSON.parse(data).rawValue as! [NSObject:AnyObject]
+            let todayTimeStampDouble = NSDate().timeIntervalSince1970
+            let todayTimeStamp = Int64(todayTimeStampDouble*1000)
+            // If  exists in DB then get the matching instance
+            let inDBObjects = realm.objects(StoredObject).filter("type = '\(type)' and id = '\(id)'")
+            
+            if(inDBObjects.count == 1){
+                storedObject = inDBObjects[0];
+                storedObject.updateDate = todayTimeStamp
+            }else {
+                storedObject.id = id
+                storedObject.date = todayTimeStamp
+                storedObject.updateDate = todayTimeStamp
+                
+            }
+            
+            if let clientDate = jsonData["_clientDate"] as? NSNumber {
+                storedObject.clientDate = clientDate.longLongValue
+            }
+            
+            
             storedObject.type = type
             storedObject.data = data
             
@@ -219,8 +220,8 @@ public class NickelStore {
         }
         return jsonArray
     }
-
-
+    
+    
     
     
     
