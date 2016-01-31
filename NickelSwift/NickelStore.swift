@@ -16,6 +16,7 @@ class StoredObject: Object {
     dynamic var id = ""
     dynamic var type = ""
     dynamic var data = ""
+    dynamic var clientDate:Int64 = 0
     dynamic var date:Int64 = 0
     dynamic var updateDate:Int64 = 0
     
@@ -89,6 +90,10 @@ public class NickelStore {
             storedObject.date = todayTimeStamp
             storedObject.updateDate = todayTimeStamp
             
+        }
+        
+        if let clientDate = jsonData["_clientDate"] as? NSNumber {
+            storedObject.clientDate = clientDate.longLongValue
         }
         
         try! realm.write {
@@ -193,6 +198,7 @@ public class NickelStore {
             jsonData["_id"] = obj.id
             jsonData["_date"] = NSNumber(longLong:obj.date)
             jsonData["_updateDate"] = NSNumber(longLong:obj.updateDate)
+            jsonData["_clientDate"] = NSNumber(longLong:obj.clientDate)
             jsonArray.append(jsonData)
         }
         return jsonArray
