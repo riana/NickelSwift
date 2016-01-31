@@ -60,7 +60,7 @@ class StorageFeature: NickelFeature {
         let result = self.store?.findFromIndexQuery(type, query: q)
         let jsonContent = JSON(result!)
         if let stringResult = jsonContent.rawString() {
-            print("query \(stringResult)")
+//            print("query \(stringResult)")
             return ["data" : stringResult]
         }
         return [NSObject:AnyObject]()
@@ -72,7 +72,7 @@ class StorageFeature: NickelFeature {
         let result = self.store?.findFromObjectQuery("type = '\(type)' and \(q)")
         let jsonContent = JSON(result!)
         if let stringResult = jsonContent.rawString() {
-            print("query \(stringResult)")
+//            print("query \(stringResult)")
             return ["data" : stringResult]
         }
         return [NSObject:AnyObject]()
