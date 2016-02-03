@@ -31,9 +31,11 @@ public protocol NickelFeature {
     
 }
 
-public class NickelWebViewController: UIViewController, WKScriptMessageHandler, WKNavigationDelegate{
+public class NickelWebViewController: UIViewController, WKScriptMessageHandler, WKNavigationDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     var myWebView:WKWebView?;
+    
+    let imagePicker = UIImagePickerController()
     
     var bridgedMethods = [String: BridgedMethod]()
     
@@ -135,6 +137,7 @@ public class NickelWebViewController: UIViewController, WKScriptMessageHandler, 
         sendtoView("Initialized", data:["status" : "ok"])
         doRegisterFeatures()
         
+        registerBridgedFunction("pickImage", bridgedMethod: self.pickImage)
         registerFeature(StorageFeature())
     }
     
@@ -146,6 +149,44 @@ public class NickelWebViewController: UIViewController, WKScriptMessageHandler, 
         
     }
     
+    
+    /**
+     * Select image feature
+     **/
+    func pickImage(operation:String, content:[NSObject:AnyObject]) -> [NSObject:AnyObject]?{
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .PhotoLibrary
+        presentViewController(imagePicker, animated: true, completion: nil)
+        return [NSObject:AnyObject]()
+    }
+    
+    public func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            let imageResized = resizeImage(pickedImage, newWidth: 100)
+            let imageData = UIImagePNGRepresentation(imageResized)
+            let base64String = imageData!.base64EncodedStringWithOptions(.EncodingEndLineWithLineFeed)
+            
+            let imagesString = "data:image/png;base64,\(base64String)"
+            sendtoView("imagePicked", data:["image" :imagesString ])
+        }
+        
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+        
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight))
+        image.drawInRect(CGRectMake(0, 0, newWidth, newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+    
+    /**
+    * END Select image feature
+    **/
     
     
 }
