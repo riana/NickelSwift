@@ -154,6 +154,7 @@ public class NickelWebViewController: UIViewController, WKScriptMessageHandler, 
      * Select image feature
      **/
     func pickImage(operation:String, content:[NSObject:AnyObject]) -> [NSObject:AnyObject]?{
+        imagePicker.delegate = self
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .PhotoLibrary
         presentViewController(imagePicker, animated: true, completion: nil)
