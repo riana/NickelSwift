@@ -138,7 +138,9 @@ public class NickelWebViewController: UIViewController, WKScriptMessageHandler, 
         doRegisterFeatures()
         
         registerBridgedFunction("pickImage", bridgedMethod: self.pickImage)
+            
         registerFeature(StorageFeature())
+        registerFeature(LocalNotificationFeature())
     }
     
     public func registerBridgedFunction(operationId:String, bridgedMethod:BridgedMethod){
@@ -186,9 +188,10 @@ public class NickelWebViewController: UIViewController, WKScriptMessageHandler, 
     }
     
     /**
-    * END Select image feature
-    **/
+     * END Select image feature
+     **/
     
+
     
 }
 

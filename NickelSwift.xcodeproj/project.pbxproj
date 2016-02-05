@@ -16,6 +16,7 @@
 		96104D411C52CEB400930238 /* NickelStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96104D401C52CEB400930238 /* NickelStore.swift */; };
 		96104D431C52CFD000930238 /* NickelWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96104D421C52CFD000930238 /* NickelWebViewController.swift */; };
 		9622A0411C543E4C00157787 /* StorageFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9622A0401C543E4C00157787 /* StorageFeature.swift */; };
+		9622A0431C64899F00157787 /* LocalNotificationFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9622A0421C64899F00157787 /* LocalNotificationFeature.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		96104D401C52CEB400930238 /* NickelStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NickelStore.swift; sourceTree = "<group>"; };
 		96104D421C52CFD000930238 /* NickelWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NickelWebViewController.swift; sourceTree = "<group>"; };
 		9622A0401C543E4C00157787 /* StorageFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageFeature.swift; sourceTree = "<group>"; };
+		9622A0421C64899F00157787 /* LocalNotificationFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationFeature.swift; sourceTree = "<group>"; };
 		F4D7357105BFE2E88F7144BC /* Pods-NickelSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NickelSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NickelSwiftTests/Pods-NickelSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +109,7 @@
 				9622A0401C543E4C00157787 /* StorageFeature.swift */,
 				96104D271C52CD1000930238 /* NickelSwift.h */,
 				96104D291C52CD1000930238 /* Info.plist */,
+				9622A0421C64899F00157787 /* LocalNotificationFeature.swift */,
 			);
 			path = NickelSwift;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				96104D431C52CFD000930238 /* NickelWebViewController.swift in Sources */,
 				9622A0411C543E4C00157787 /* StorageFeature.swift in Sources */,
 				96104D411C52CEB400930238 /* NickelStore.swift in Sources */,
+				9622A0431C64899F00157787 /* LocalNotificationFeature.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
