@@ -32,7 +32,7 @@ class LocalNotificationFeature: NickelFeature {
     
     func getScheduledNotifications(operation:String, content:[NSObject:AnyObject]) -> [NSObject:AnyObject]?{
         var response = [NSObject:AnyObject]();
-         var notifications = [AnyObject]()
+        var notifications = [AnyObject]()
         
         for  notification in UIApplication.sharedApplication().scheduledLocalNotifications! {
             notifications.append(notification.userInfo!)
@@ -40,7 +40,7 @@ class LocalNotificationFeature: NickelFeature {
         response["notifications"] = notifications
         return response
     }
-
+    
     
     func cancelNotification(operation:String, content:[NSObject:AnyObject]) -> [NSObject:AnyObject]?{
         let notificationId = content["id"] as! String
@@ -58,16 +58,34 @@ class LocalNotificationFeature: NickelFeature {
         
         UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound], categories: nil))
         
-        let localNotification = UILocalNotification()
-        localNotification.userInfo = content
-        localNotification.fireDate = NSDate(timeIntervalSinceNow: 5)
-        localNotification.alertBody = content["message"] as! String?
-        localNotification.soundName = UILocalNotificationDefaultSoundName
-        localNotification.timeZone = NSTimeZone.defaultTimeZone()
-        localNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
-        localNotification.repeatInterval = NSCalendarUnit.Minute
         
-        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+        
+        
+        if let fireTimeStamp = content["date"] as? NSNumber {
+            let fireDate = NSDate(timeIntervalSince1970: NSTimeInterval(fireTimeStamp.longLongValue / 1000))
+            let localNotification = UILocalNotification()
+            localNotification.userInfo = content
+            localNotification.fireDate = fireDate
+            localNotification.alertBody = content["message"] as! String?
+            localNotification.soundName = UILocalNotificationDefaultSoundName
+            localNotification.timeZone = NSTimeZone.defaultTimeZone()
+            localNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
+            if let repeatInterval = content["repeat"] as! String? {
+                if repeatInterval == "Hour"{
+                    localNotification.repeatInterval = NSCalendarUnit.Hour
+                }
+                if repeatInterval == "Minute"{
+                    localNotification.repeatInterval = NSCalendarUnit.Minute
+                }
+                if repeatInterval == "Day"{
+                    localNotification.repeatInterval = NSCalendarUnit.Day
+                }
+                
+            }
+            
+            
+            UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+        }
         return [NSObject:AnyObject]()
     }
     
