@@ -35,6 +35,10 @@ public class NickelWebViewController: UIViewController, WKScriptMessageHandler, 
     
     var myWebView:WKWebView?;
     
+    var timer:NSTimer?
+    
+    var elapsedTime:Int = 0
+    
     let imagePicker = UIImagePickerController()
     
     var bridgedMethods = [String: BridgedMethod]()
@@ -138,7 +142,9 @@ public class NickelWebViewController: UIViewController, WKScriptMessageHandler, 
         doRegisterFeatures()
         
         registerBridgedFunction("pickImage", bridgedMethod: self.pickImage)
-            
+        registerBridgedFunction("startTimer", bridgedMethod: self.startTimer)
+        registerBridgedFunction("stopTimer", bridgedMethod: self.stopTimer)
+        
         registerFeature(StorageFeature())
         registerFeature(LocalNotificationFeature())
     }
@@ -191,6 +197,30 @@ public class NickelWebViewController: UIViewController, WKScriptMessageHandler, 
      * END Select image feature
      **/
     
+     /**
+     * Native Timer feature
+     **/
+    func startTimer(operation:String, content:[NSObject:AnyObject]) -> [NSObject:AnyObject]?{
+        self.elapsedTime = 0
+        timer =  NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("timerTick"), userInfo: nil, repeats: true)
+        
+        return [NSObject:AnyObject]()
+    }
+    
+    func stopTimer(operation:String, content:[NSObject:AnyObject]) -> [NSObject:AnyObject]?{
+        timer?.invalidate()
+        sendtoView("timerComplete", data:["elapsedTime" : self.elapsedTime]);
+        return [NSObject:AnyObject]()
+    }
+    
+    func timerTick(){
+        self.elapsedTime++;
+        sendtoView("timeStep", data:["elapsedTime" : self.elapsedTime]);
+    }
+    
+    /**
+    * END Native Timer feature
+    **/
 
     
 }
