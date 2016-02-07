@@ -144,6 +144,8 @@ public class NickelWebViewController: UIViewController, WKScriptMessageHandler, 
         registerBridgedFunction("pickImage", bridgedMethod: self.pickImage)
         registerBridgedFunction("startTimer", bridgedMethod: self.startTimer)
         registerBridgedFunction("stopTimer", bridgedMethod: self.stopTimer)
+        registerBridgedFunction("enableAwakeMode", bridgedMethod: self.enableAwakeMode)
+        registerBridgedFunction("disableAwakeMode", bridgedMethod: self.disableAwakeMode)
         
         registerFeature(StorageFeature())
         registerFeature(LocalNotificationFeature())
@@ -196,7 +198,7 @@ public class NickelWebViewController: UIViewController, WKScriptMessageHandler, 
     /**
      * END Select image feature
      **/
-    
+     
      /**
      * Native Timer feature
      **/
@@ -219,9 +221,18 @@ public class NickelWebViewController: UIViewController, WKScriptMessageHandler, 
     }
     
     /**
-    * END Native Timer feature
-    **/
-
+     * END Native Timer feature
+     **/
+    
+    func enableAwakeMode(operation:String, content:[NSObject:AnyObject]) -> [NSObject:AnyObject]?{
+        UIApplication.sharedApplication().idleTimerDisabled = true
+        return [NSObject:AnyObject]()
+    }
+    
+    func disableAwakeMode(operation:String, content:[NSObject:AnyObject]) -> [NSObject:AnyObject]?{
+        UIApplication.sharedApplication().idleTimerDisabled = false
+        return [NSObject:AnyObject]()
+    }
     
 }
 
