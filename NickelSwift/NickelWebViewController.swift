@@ -148,6 +148,7 @@ public class NickelWebViewController: UIViewController, WKScriptMessageHandler, 
         registerFeature(LocalNotificationFeature())
         registerFeature(AwakeFeature())
         registerFeature(TTSFeature())
+        registerFeature(AudioFeature())
     }
     
     public func registerBridgedFunction(operationId:String, bridgedMethod:BridgedMethod){
