@@ -11,6 +11,7 @@ import AVFoundation
 
 class AudioFeature: NickelFeature {
     
+    var audioPlayer: AVAudioPlayer!
     
     var exposedFunctions:[String: BridgedMethod] = [String: BridgedMethod]()
     
@@ -34,12 +35,11 @@ class AudioFeature: NickelFeature {
         let audioFile = content["soundFile"] as! String;
         let path = NSBundle.mainBundle().pathForResource("www/\(audioFile)", ofType:nil)!
         let url = NSURL(fileURLWithPath: path)
-        
         do {
-            let audioPlayer = try AVAudioPlayer(contentsOfURL: url)
+            audioPlayer = try AVAudioPlayer(contentsOfURL: url)
             audioPlayer.play()
         } catch {
-            // couldn't load file :(
+            print("error loading file")
         }
         return [NSObject:AnyObject]()
     }
