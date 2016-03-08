@@ -34,7 +34,7 @@ class JSONFeature: NickelFeature {
         let fileName = content["file"] as! String
         
         do {
-            print(fileName)
+
             let path = NSBundle.mainBundle().pathForResource("www/\(fileName)", ofType: "json")
             if path != nil {
                 let fileContent = try NSString(contentsOfFile: path!, encoding: NSUTF8StringEncoding)
