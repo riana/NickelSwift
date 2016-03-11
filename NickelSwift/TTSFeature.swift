@@ -16,22 +16,13 @@ class TTSFeature: NickelFeature {
     
     let voice = AVSpeechSynthesisVoice(language: "en-US")
     
-    var exposedFunctions:[String: BridgedMethod] = [String: BridgedMethod]()
-    
-    var nickelView:NickelWebViewController? {
-        
-        set(newNickelView) {
-            
-        }
-        
-        get {
-            return self.nickelView
-        }
-        
-    }
     
     init() {
-        exposedFunctions["speak"] = self.speak
+    }
+    
+    
+    func setupFeature(nickelViewController:NickelWebViewController){
+        nickelViewController.registerBridgedFunction("speak", bridgedMethod: self.speak)
     }
     
     func speak(operation:String, content:[NSObject:AnyObject]) -> [NSObject:AnyObject]?{

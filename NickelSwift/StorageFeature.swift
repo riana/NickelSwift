@@ -14,28 +14,18 @@ class StorageFeature: NickelFeature {
     
     var store:NickelStore?;
     
-    var exposedFunctions:[String: BridgedMethod] = [String: BridgedMethod]()
-    
-    var nickelView:NickelWebViewController? {
-        
-        set(newNickelView) {
-            
-        }
-        
-        get {
-            return self.nickelView
-        }
-        
-    }
     
     init() {
         self.store = NickelStore()
-        exposedFunctions["storeObject"] = self.storeObject
-        exposedFunctions["loadAllObjects"] = self.loadAllObjects
-        exposedFunctions["deleteObject"] = self.deleteObject
-        exposedFunctions["queryIndex"] = self.queryIndex
-        exposedFunctions["queryObject"] = self.queryObject
-        exposedFunctions["dropDatabase"] = self.dropDatabase
+    }
+    
+    func setupFeature(nickelViewController:NickelWebViewController){
+        nickelViewController.registerBridgedFunction("storeObject", bridgedMethod: self.storeObject)
+        nickelViewController.registerBridgedFunction("loadAllObjects", bridgedMethod: self.loadAllObjects)
+        nickelViewController.registerBridgedFunction("deleteObject", bridgedMethod: self.deleteObject)
+        nickelViewController.registerBridgedFunction("queryIndex", bridgedMethod: self.queryIndex)
+        nickelViewController.registerBridgedFunction("queryObject", bridgedMethod: self.queryObject)
+        nickelViewController.registerBridgedFunction("dropDatabase", bridgedMethod: self.dropDatabase)
     }
     
     func dropDatabase(operation:String, content:[NSObject:AnyObject]) -> [NSObject:AnyObject]?{
@@ -60,7 +50,7 @@ class StorageFeature: NickelFeature {
         let result = self.store?.findFromIndexQuery(type, query: q)
         let jsonContent = JSON(result!)
         if let stringResult = jsonContent.rawString() {
-//            print("query \(stringResult)")
+            //            print("query \(stringResult)")
             return ["data" : stringResult]
         }
         return [NSObject:AnyObject]()
@@ -72,7 +62,7 @@ class StorageFeature: NickelFeature {
         let result = self.store?.findFromObjectQuery("type = '\(type)' and \(q)")
         let jsonContent = JSON(result!)
         if let stringResult = jsonContent.rawString() {
-//            print("query \(stringResult)")
+            //            print("query \(stringResult)")
             return ["data" : stringResult]
         }
         return [NSObject:AnyObject]()

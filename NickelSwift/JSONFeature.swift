@@ -12,22 +12,11 @@ import AVFoundation
 
 class JSONFeature: NickelFeature {
     
-    var exposedFunctions:[String: BridgedMethod] = [String: BridgedMethod]()
-    
-    var nickelView:NickelWebViewController? {
-        
-        set(newNickelView) {
-            
-        }
-        
-        get {
-            return self.nickelView
-        }
-        
+    init() {
     }
     
-    init() {
-        exposedFunctions["loadJson"] = self.loadJson
+    func setupFeature(nickelViewController:NickelWebViewController){
+        nickelViewController.registerBridgedFunction("loadJson", bridgedMethod: self.loadJson)
     }
     
     func loadJson(operation:String, content:[NSObject:AnyObject]) -> [NSObject:AnyObject]?{

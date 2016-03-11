@@ -25,9 +25,7 @@ public typealias BridgedMethod = (String, [NSObject:AnyObject]) -> [NSObject:Any
 
 public protocol NickelFeature {
     
-    var exposedFunctions: [String: BridgedMethod] { get }
-    
-    var nickelView:NickelWebViewController? { get set}
+    func setupFeature(nickelViewController:NickelWebViewController)
     
 }
 
@@ -43,6 +41,8 @@ public class NickelWebViewController: UIViewController, WKScriptMessageHandler, 
     
     var bridgedMethods = [String: BridgedMethod]()
     
+    var features = [NickelFeature]()
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,13 +57,6 @@ public class NickelWebViewController: UIViewController, WKScriptMessageHandler, 
         
         
         self.view.addSubview(myWebView!)
-    }
-    
-    public func registerFeature(var feature:NickelFeature){
-        feature.nickelView = self
-        for (functionName, exposedFunction) in feature.exposedFunctions {
-            registerBridgedFunction(functionName, bridgedMethod: exposedFunction)
-        }
     }
     
     public func setMainPage(name:String){
@@ -144,12 +137,15 @@ public class NickelWebViewController: UIViewController, WKScriptMessageHandler, 
         registerBridgedFunction("pickImage", bridgedMethod: self.pickImage)
         registerBridgedFunction("startTimer", bridgedMethod: self.startTimer)
         registerBridgedFunction("stopTimer", bridgedMethod: self.stopTimer)
-        registerFeature(StorageFeature())
-        registerFeature(LocalNotificationFeature())
-        registerFeature(AwakeFeature())
-        registerFeature(TTSFeature())
-        registerFeature(AudioFeature())
-        registerFeature(JSONFeature())
+        features.append(StorageFeature())
+        features.append(LocalNotificationFeature())
+        features.append(AwakeFeature())
+        features.append(TTSFeature())
+        features.append(AudioFeature())
+        features.append(JSONFeature())
+        for feature in features {
+            feature.setupFeature(self)
+        }
     }
     
     public func registerBridgedFunction(operationId:String, bridgedMethod:BridgedMethod){
@@ -222,10 +218,10 @@ public class NickelWebViewController: UIViewController, WKScriptMessageHandler, 
     }
     
     /**
-     * END Native Timer feature
-     **/
+    * END Native Timer feature
+    **/
     
-        
+    
 }
 
 

@@ -13,25 +13,16 @@ class AudioFeature: NickelFeature {
     
     var audioPlayer: AVAudioPlayer!
     
-    var exposedFunctions:[String: BridgedMethod] = [String: BridgedMethod]()
-    
-    var nickelView:NickelWebViewController? {
-        
-        set(newNickelView) {
-            
-        }
-        
-        get {
-            return self.nickelView
-        }
-        
-    }
-    
     init() {
-        exposedFunctions["playSound"] = self.playAudio
+        
     }
     
-    func playAudio(operation:String, content:[NSObject:AnyObject]) -> [NSObject:AnyObject]?{
+    func setupFeature(nickelViewController:NickelWebViewController){
+        nickelViewController.registerBridgedFunction("playSound", bridgedMethod: self.playSound)
+    }
+
+    
+    func playSound(operation:String, content:[NSObject:AnyObject]) -> [NSObject:AnyObject]?{
         let audioFile = content["soundFile"] as! String;
         let path = NSBundle.mainBundle().pathForResource("www/\(audioFile)", ofType:nil)!
         let url = NSURL(fileURLWithPath: path)

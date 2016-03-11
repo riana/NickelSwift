@@ -10,24 +10,14 @@ import Foundation
 
 class LocalNotificationFeature: NickelFeature {
     
-    var exposedFunctions:[String: BridgedMethod] = [String: BridgedMethod]()
-    
-    var nickelView:NickelWebViewController? {
-        
-        set(newNickelView) {
-            
-        }
-        
-        get {
-            return self.nickelView
-        }
-        
+    init() {
+       
     }
     
-    init() {
-        exposedFunctions["scheduleNotification"] = self.scheduleNotification
-        exposedFunctions["cancelNotification"] = self.cancelNotification
-        exposedFunctions["getScheduledNotifications"] = self.getScheduledNotifications
+    func setupFeature(nickelViewController:NickelWebViewController){
+        nickelViewController.registerBridgedFunction("scheduleNotification", bridgedMethod: self.scheduleNotification)
+        nickelViewController.registerBridgedFunction("cancelNotification", bridgedMethod: self.cancelNotification)
+        nickelViewController.registerBridgedFunction("getScheduledNotifications", bridgedMethod: self.getScheduledNotifications)
     }
     
     func getScheduledNotifications(operation:String, content:[NSObject:AnyObject]) -> [NSObject:AnyObject]?{

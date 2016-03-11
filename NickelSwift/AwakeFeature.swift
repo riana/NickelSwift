@@ -10,23 +10,13 @@ import Foundation
 
 class AwakeFeature: NickelFeature {
     
-    var exposedFunctions:[String: BridgedMethod] = [String: BridgedMethod]()
-    
-    var nickelView:NickelWebViewController? {
-        
-        set(newNickelView) {
-            
-        }
-        
-        get {
-            return self.nickelView
-        }
-        
+    init() {
+
     }
     
-    init() {
-        exposedFunctions["enableAwakeMode"] = self.enableAwakeMode
-        exposedFunctions["disableAwakeMode"] = self.disableAwakeMode
+    func setupFeature(nickelViewController:NickelWebViewController){
+        nickelViewController.registerBridgedFunction("enableAwakeMode", bridgedMethod: self.enableAwakeMode)
+        nickelViewController.registerBridgedFunction("disableAwakeMode", bridgedMethod: self.disableAwakeMode)
     }
     
     func enableAwakeMode(operation:String, content:[NSObject:AnyObject]) -> [NSObject:AnyObject]?{
