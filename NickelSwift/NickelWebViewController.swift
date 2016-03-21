@@ -143,6 +143,7 @@ public class NickelWebViewController: UIViewController, WKScriptMessageHandler, 
         features.append(TTSFeature())
         features.append(AudioFeature())
         features.append(JSONFeature())
+        features.append(i18nFeature())
         for feature in features {
             feature.setupFeature(self)
         }
