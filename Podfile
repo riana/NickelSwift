@@ -5,10 +5,10 @@ use_frameworks!
 
 target 'NickelSwift' do
    pod 'SwiftyJSON'
-   pod 'RealmSwift', '0.97.0'
+   pod 'RealmSwift', '0.98.6'
 end
 
 target 'NickelSwiftTests' do
    pod 'SwiftyJSON'
-   pod 'RealmSwift', '0.97.0'
+   pod 'RealmSwift', '0.98.6'
 end
